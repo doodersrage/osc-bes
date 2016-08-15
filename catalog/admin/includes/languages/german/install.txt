@@ -1,0 +1,20 @@
+Install for add_to_german.php:
+
+1. Backup files before changing !!!!
+2. Open your catalog/admin/includes/languages/german.php
+3. Copy contents of add_to_german.php and paste it into catalog/admin/includes/languages/german.php replacing changes you made when installing step_by_step_orders.
+
+
+Installation:
+1. Dateien vor den Änderungen sichern !!!!
+2. Datei ../catalog/admin/includes/german.php öffnen
+3. Inhalte aus der add_to_german.php kopieren und in /catalog/admin/includes/german.php einfügen. Dabei die zuvor bei der Installation von step_by_step_orders gemachten Änderungen überschreiben.
+
+For further info: mailto:fidji@hwhouse.de
+
+==========================
+
+
+copy the other files into admin/includes/languages/german
+
+Kopiere die anderen Dateien in das Verzeichnis admin/includes/languages/german

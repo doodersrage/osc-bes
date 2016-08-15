@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="boxes.php" server="68.66.148.106//var/www/bes/" local="128981497240000000" remote="128981497240000000" />
+<file name="breadcrumb.php" server="68.66.148.106//var/www/bes/" local="128981497240000000" remote="128981497240000000" />
+<file name="cc_validation.php" server="68.66.148.106//var/www/bes/" local="128981497240000000" remote="128981497240000000" />
+<file name="currencies.php" server="68.66.148.106//var/www/bes/" local="128981497240000000" remote="128981497240000000" />
+<file name="email.php" server="68.66.148.106//var/www/bes/" local="128981497250000000" remote="128981497250000000" />
+<file name="http_client.php" server="68.66.148.106//var/www/bes/" local="128981497250000000" remote="128981497250000000" />
+<file name="language.php" server="68.66.148.106//var/www/bes/" local="128981497260000000" remote="128981497260000000" />
+<file name="message_stack.php" server="68.66.148.106//var/www/bes/" local="128981497260000000" remote="128981497260000000" />
+<file name="mime.php" server="68.66.148.106//var/www/bes/" local="128981497260000000" remote="128981497260000000" />
+<file name="navigation_history.php" server="68.66.148.106//var/www/bes/" local="128981497260000000" remote="128981497260000000" />
+<file name="order.php" server="68.66.148.106//var/www/bes/" local="128981497270000000" remote="128981497270000000" />
+<file name="order_total.php" server="68.66.148.106//var/www/bes/" local="128981497270000000" remote="128981497270000000" />
+<file name="payment.php" server="68.66.148.106//var/www/bes/" local="128981497280000000" remote="128981497280000000" />
+<file name="sessions.php" server="68.66.148.106//var/www/bes/" local="128981497280000000" remote="128981497280000000" />
+<file name="shipping.php" server="68.66.148.106//var/www/bes/" local="128981497280000000" remote="128981497280000000" />
+<file name="shopping_cart.php" server="68.66.148.106//var/www/bes/" local="128981497290000000" remote="128981497290000000" />
+<file name="split_page_results.php" server="68.66.148.106//var/www/bes/" local="128981497290000000" remote="128981497290000000" />
+<file name="wishlist.php" server="68.66.148.106//var/www/bes/" local="128981497300000000" remote="128981497300000000" />
+</dwsync>

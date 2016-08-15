@@ -1,0 +1,4 @@
+[09-Apr-2007 08:27:23] PHP Warning:  main(includes/application_top.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/boate3/public_html/catalog/index.php on line 13
+[09-Apr-2007 08:27:23] PHP Warning:  main(includes/application_top.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/boate3/public_html/catalog/index.php on line 13
+[09-Apr-2007 08:27:23] PHP Warning:  main(includes/application_top.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/boate3/public_html/catalog/index.php on line 13
+[09-Apr-2007 08:27:23] PHP Fatal error:  main() [<a href='function.require'>function.require</a>]: Failed opening required 'includes/application_top.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/boate3/public_html/catalog/index.php on line 13

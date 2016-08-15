@@ -1,0 +1,300 @@
+body {
+    margin: 0;
+    font-family: Helvetica;
+    background: #FFFFFF;
+    color: #000000;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+}
+
+form {
+  display:inline;
+}
+
+A {
+  color: #6699DD;
+  text-decoration: none;
+}
+
+A:hover {
+  text-decoration: underline;
+}
+
+#headerLogo {
+}
+
+table.logo{
+	display: none;
+}
+
+table.categories {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+
+	font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
+
+    cursor: hand;
+	cursor: pointer;
+}
+
+tr.categories{
+	background-color: white;
+}
+
+tr.categories:hover{
+	background-color: #EEEEEE;
+}
+
+tr.categoriesselect{
+	background-color: #FFFFCC;
+}
+
+td.categories {
+	padding-left: 5px;
+	height:40px;
+	border-top-color: #AAAAAA;
+    border-top-style: solid;
+    border-top-width: thin;
+	border-bottom-color: #AAAAAA;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+
+td.categories a{
+  	font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
+}
+
+hr.separator {
+	border: 0px; 
+	background-color: #AAAAAA; 
+	height: 1px;
+}
+
+td.smallText, span.smallText, p.smallText {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+td.midText, span.midText, p.midText {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+span.orderEdit {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+td.main {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+	
+td.review {
+	padding-left:10px;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+}
+
+td.footer{
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+TR.accountHistory-odd, TR.addressBook-odd, TR.alsoPurchased-odd, TR.payment-odd, TR.productListing-odd, TR.productReviews-odd, TR.upcomingProducts-odd, TR.shippingOptions-odd {
+  background: #f8f8f9;
+}
+
+TR.accountHistory-even, TR.addressBook-even, TR.alsoPurchased-even, TR.payment-even, TR.productListing-even, TR.productReviews-even, TR.upcomingProducts-even, TR.shippingOptions-even {
+  background: #f8f8f9;
+}
+
+TABLE.productListing {
+  border: 1px;
+  border-style: solid;
+  border-color: #b6b7cb;
+  border-spacing: 1px;
+}
+
+.productListing-heading {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  background: #b6b7cb;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+TD.productListing-data {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  padding-right: 4px;
+}
+
+SPAN.productSpecialPrice {
+  color: #ff0000;
+}
+
+table.productsGrid {
+  border-collapse: collapse;
+}
+
+td.productsGrid{
+  border: 1px;
+  border-style: solid;
+  border-color: #b6b7cb;
+  border-spacing: 1px;
+}
+
+table.productCell{
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  height: 100%;
+}
+
+td.stockWarning {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+
+td.pageHeading  {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+td.productHeader {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#mobileButton table{
+  background: url(../images/greybutton/background.gif) repeat-x;
+  border-collapse: collapse;
+}
+
+#mobileButton td{
+  height: 23px;
+  font-family: Verdana;
+  font-size: 11px;
+  font-weight: bold;
+  color: navy;
+  vertical-align: middle;
+  padding: 0px;
+  border: 0;
+  cursor: pointer;
+}
+
+#header {
+}
+#mainBody {
+}
+
+#mobileForm input[type="text"],input[type="password"], select {
+	width: 150px;
+}
+
+#productAttribute select {
+	width: 100px;
+}
+
+#errorMsg {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  background: #ff0000;
+  color: #ffffff;
+  font-weight : bold;
+  text-align : center;
+}
+
+TABLE.headerNavigation {
+	background-image: url("../images/header_navigation_back.png");
+	background-repeat: repeat-x;
+    height: 50px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+tr.headerNavigation {
+}
+
+td.headerNavigation {
+  font-family: Arial;
+  font-size: 10px;
+  text-align: center;
+  font-weight : bold;
+  vertical-align: bottom;
+  width: 20%;
+  cursor: pointer;
+}
+
+TD.headerNavigation A { 
+	color: #CCCCCC;
+}
+
+A.headerNavigation:hover {
+  color: #ffffff;
+}
+
+
+#headerShop {
+	background: url("../images/shop.png") no-repeat center top;
+}
+
+#headerSearch {
+	background: url("../images/search.png") no-repeat center top;
+}
+
+#headerAccount {
+	background: url("../images/settings.png") no-repeat center top;
+}
+
+#headerAbout {
+	background: url("../images/about.png") no-repeat center top;
+}
+
+#headerLanguage {
+	background: url("../images/language.png") no-repeat center top;
+}
+
+table.headerTitle{
+	height: 48px;
+	background-image: url("../images/header_back.png");
+	background-repeat: repeat-x;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+td.headerTitleRight{
+	width: 60px;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 9px;
+	padding-right: 6px;
+}
+
+
+.messageBox { font-family: Verdana, Arial, sans-serif; font-size: 10px; }
+.messageStackError, .messageStackWarning { font-family: Verdana, Arial, sans-serif; font-size: 10px; background-color: #ffb3b5; }
+.messageStackSuccess { font-family: Verdana, Arial, sans-serif; font-size: 10px; background-color: #99ff00; }
+
+div.headerNavigation {
+	filter:alpha(opacity=50);
+	-moz-opacity:.50;
+    opacity:.50;
+}

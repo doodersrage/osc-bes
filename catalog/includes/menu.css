@@ -1,0 +1,62 @@
+/**************** menu coding *****************/
+#menu {
+width: 174px /* 10em; */
+background: #eee;
+background-color:#FFFFFF;
+}
+
+#menu ul {
+list-style: none;
+background-color:#FFFFFF;
+margin: 0;
+padding: 0;
+}
+
+#menu a, #menu h2 {
+font: bold 12px/12px verdana, arial, sans-serif;
+display: block;
+background-color:#FFFFFF;
+margin: 0;
+padding: 2px 3px;
+}
+
+#menu h2 {
+color: #fff;
+background-color:#FFFFFF;
+background: #000;
+text-transform: uppercase;
+}
+
+#menu a {
+color: #404040;
+background: #f8f8f9;
+text-decoration: none;
+background-image:url(../images/bg.jpg)
+}
+
+#menu a:hover {
+color: #a00;
+background: #fff;
+background-color:#FFFFFF;
+}
+
+#menu li {position: relative;}
+
+#menu ul ul {
+position: absolute;
+background-color:#f8f8f9;
+top: 0;
+left: 100%;
+width: 100%;
+border-width: 1px;
+border-style: solid;
+border-color: #6699cc;
+}
+
+div#menu ul ul,
+div#menu ul li:hover ul ul
+{display: none;}
+
+div#menu ul li:hover ul,
+div#menu ul ul li:hover ul
+{display: block;}

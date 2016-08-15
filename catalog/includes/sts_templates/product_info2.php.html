@@ -1,0 +1,145 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!--$headcontent--><link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel=stylesheet href="includes/menu.css" type="text/css" media="screen">
+<!--[if IE]>
+<link rel=stylesheet href="includes/menu-ie.css" type="text/css" media="screen">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+<div class="h1"><h1>$h1</h1></div>
+<div class="content">
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+  <tr valign="top"><td class="empty"></td><td rowspan="2" class="content_center">
+    $headermsgs
+    $startform
+    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><h2>$productname</h2></td>
+        <td class="pageHeading" align="right" valign="top">$displayprice</td>
+      </tr>
+      <tr>
+        <td colspan="2"><h3>$manufacturer</h3></td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+      </tr>
+      <tr>
+        <td class="main" valign="top">
+          <p>Model: $productmodel</p><p>$productinfo</p><p>$productdesc</p>
+        </td>
+        <td width="110" align="right" valign="top"><table border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td align="center" class="smallText">
+              $productpopup
+            </td>
+          </tr>
+        </table></td>
+      </tr>
+	</table>
+    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+      </tr>
+      <tr>
+        <td class="main">$reviews</td>
+      </tr>
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="20"></td>
+      </tr>
+      <tr><td><h5>$customizeheader</h5></td></tr>
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+      </tr>
+      <tr>
+        <td class="main">$cart</td>
+      </tr>
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="20"></td>
+      </tr>
+      <tr>
+        <td><table border="0" width="100%" cellspacing="1" cellpadding="2" class="infoBox">
+          <tr class="infoBoxContents">
+            <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+              <tr>
+                <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+                <td class="main" align="left">$back</td>
+                <td class="main" align="center">$reviewsbutton</td>
+                <td class="main" align="center">$addtowishlistbutton</td>
+                <td class="main" align="right">$addtocartbutton</td>
+                <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="20"></td>
+      </tr>
+      <tr>
+        <td>$related
+        </td>
+      </tr>
+      <tr>
+        <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+      </tr>
+      <tr>
+        <td>$alsopurchased
+        </td>
+      </tr>
+    </table>$endform
+  </td><td class="empty"></td></tr>
+  <tr valign="top"><td class="content_left">
+      $catcssmenu
+      $manufacturerbox
+      $pranges
+      $whatsnewbox
+      $searchbox
+      $informationbox
+  </td><td class="content_right">
+      $prodpopup1
+      $prodpopup2
+      $prodpopup3
+      $cartbox
+      $wishlistbox
+      $maninfobox
+      $orderhistorybox
+      $testimonialsbox
+      $bestsellersbox
+      $specialfriendbox
+      $reviewsbox
+  </td></tr></table></div>
+<div class="header">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr class="header"> 
+    <td nowrap class="himg"><font size="1" face="Arial, Helvetica, sans-serif">$cataloglogo</font></td>
+    <td><div align="right"><font size="1" face="Arial, Helvetica, sans-serif"> 
+        $myaccountlogo $cartlogo $checkoutlogo</font></div></td>
+  </tr>
+</table></div>
+<div class="headerNavigation">
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+  <tr class="headerNavigation"> 
+    <td class="headerNavigation" align="left">$breadcrumbs</td>
+    <td class="headerNavigation" align="right">$myaccountlogoff | $cartcontents | $wishlistcontents | $checkout | <a href="$FILENAME_PAGES?pages_id=10" class="headerNavigation">About Us</a> | <a href="$FILENAME_CONTACT_US" class="headerNavigation">Contact Us</a></td>
+  </tr>
+</table></div>
+<div class="footer">
+<table border="0" width="100%" cellspacing="0" cellpadding="1">
+  <tr class="footer">
+    <td class="footer">&nbsp;&nbsp;$date&nbsp;&nbsp;</td>
+    <td align="right" class="footer">&nbsp;&nbsp;$numrequests&nbsp;&nbsp;</td>
+  </tr>
+</table>
+<br>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" class="smallText">Copyright &copy; $year <a href="$FILENAME_DEFAULT">$storename</a><br>Powered by <a href="http://www.oscommerce.com" target="_blank">osCommerce</a></td>
+  </tr>
+</table>
+$banner
+</div></div>
+</body>
+</html>

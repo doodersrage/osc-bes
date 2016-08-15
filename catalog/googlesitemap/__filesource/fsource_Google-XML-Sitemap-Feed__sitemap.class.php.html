@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>File Source for sitemap.class.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Google-XML-Sitemap-Feed<br /><div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Google-XML-Sitemap-Feed.html" class="menu">class tree: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex_Google-XML-Sitemap-Feed.html" class="menu">index: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Google-XML-Sitemap-Feed</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Google-XML-Sitemap-Feed.html">Google-XML-Sitemap-Feed</a><br />
+      	</div>
+      <br />
+                        <br />
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file sitemap.class.php</h1>
+<p>Documentation is available at <a href="../Google-XML-Sitemap-Feed/_googlesitemap_sitemap_class_php.html">sitemap.class.php</a></p>
+<div class="src-code"><span class="php">
+<div class="listing"><pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc"> * Google XML Sitemap Feed</span></li>
+<li><a name="a4"></a><span class="src-doc"> *</span></li>
+<li><a name="a5"></a><span class="src-doc"> * The Google sitemap service was announced on 2 June 2005 and represents</span></li>
+<li><a name="a6"></a><span class="src-doc"> * a huge development in terms of crawler technology.  This contribution is</span></li>
+<li><a name="a7"></a><span class="src-doc"> * designed to create the sitemap XML feed per the specification delineated</span></li>
+<li><a name="a8"></a><span class="src-doc"> * by Google.</span></li>
+<li><a name="a9"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> Google-XML-Sitemap-Feed</span></li>
+<li><a name="a10"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@license</span><span class="src-doc"> http://opensource.org/licenses/gpl-license.php GNU Public License</span></li>
+<li><a name="a11"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a12"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@link</span><span class="src-doc"> http://www.oscommerce-freelancers.com/ osCommerce-Freelancers</span></li>
+<li><a name="a13"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@link</span><span class="src-doc"> http://www.google.com/webmasters/sitemaps/docs/en/about.html About Google Sitemap</span></li>
+<li><a name="a14"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc"> Copyright 2005, Bobby Easland</span></li>
+<li><a name="a15"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a16"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@filesource</span></li>
+<li><a name="a17"></a><span class="src-doc"> */</span></li>
+<li><a name="a18"></a>&nbsp;</li>
+<li><a name="a19"></a><span class="src-doc">/**</span></li>
+<li><a name="a20"></a><span class="src-doc"> * MySQL_Database Class</span></li>
+<li><a name="a21"></a><span class="src-doc"> *</span></li>
+<li><a name="a22"></a><span class="src-doc"> * The MySQL_Database class provides abstraction so the databaes can be accessed</span></li>
+<li><a name="a23"></a><span class="src-doc"> * without having to use tep API functions. This class has minimal error handling</span></li>
+<li><a name="a24"></a><span class="src-doc"> * so make sure your code is tight!</span></li>
+<li><a name="a25"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> Google-XML-Sitemap-Feed</span></li>
+<li><a name="a26"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@license</span><span class="src-doc"> http://opensource.org/licenses/gpl-license.php GNU Public License</span></li>
+<li><a name="a27"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.1</span></li>
+<li><a name="a28"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@link</span><span class="src-doc"> http://www.oscommerce-freelancers.com/ osCommerce-Freelancers</span></li>
+<li><a name="a29"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc"> Copyright 2005, Bobby Easland</span></li>
+<li><a name="a30"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a31"></a><span class="src-doc"> */</span></li>
+<li><a name="a32"></a><span class="src-key">class </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html">MySQL_DataBase</a><span class="src-sym">{</span></li>
+<li><a name="a33"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a34"></a><span class="src-doc">     * Database host (localhost, IP based, etc)</span></li>
+<li><a name="a35"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a36"></a><span class="src-doc">     */</span></li>
+<li><a name="a37"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$host">$host</a><span class="src-sym">;</span></li>
+<li><a name="a38"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a39"></a><span class="src-doc">     * Database user</span></li>
+<li><a name="a40"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a41"></a><span class="src-doc">     */</span></li>
+<li><a name="a42"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$user">$user</a><span class="src-sym">;</span></li>
+<li><a name="a43"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a44"></a><span class="src-doc">     * Database name</span></li>
+<li><a name="a45"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a46"></a><span class="src-doc">     */</span></li>
+<li><a name="a47"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$db">$db</a><span class="src-sym">;</span></li>
+<li><a name="a48"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a49"></a><span class="src-doc">     * Database password</span></li>
+<li><a name="a50"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a51"></a><span class="src-doc">     */</span></li>
+<li><a name="a52"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$pass">$pass</a><span class="src-sym">;</span></li>
+<li><a name="a53"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a54"></a><span class="src-doc">     * Database link</span></li>
+<li><a name="a55"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">resource </span></li>
+<li><a name="a56"></a><span class="src-doc">     */</span></li>
+<li><a name="a57"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$link_id">$link_id</a><span class="src-sym">;</span></li>
+<li><a name="a58"></a>&nbsp;</li>
+<li><a name="a59"></a><span class="src-doc">/**</span></li>
+<li><a name="a60"></a><span class="src-doc"> * MySQL_DataBase class constructor</span></li>
+<li><a name="a61"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a62"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a63"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$host </span></li>
+<li><a name="a64"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$user </span></li>
+<li><a name="a65"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$db </span></li>
+<li><a name="a66"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$pass </span></li>
+<li><a name="a67"></a><span class="src-doc"> */    </span></li>
+<li><a name="a68"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodMySQL_DataBase">MySQL_DataBase</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">, </span><span class="src-var">$user</span><span class="src-sym">, </span><span class="src-var">$db</span><span class="src-sym">, </span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a69"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$host">host</a> = <span class="src-var">$host</span><span class="src-sym">;</span></li>
+<li><a name="a70"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$user">user</a> = <span class="src-var">$user</span><span class="src-sym">;</span></li>
+<li><a name="a71"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$db">db</a> = <span class="src-var">$db</span><span class="src-sym">;</span></li>
+<li><a name="a72"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$pass">pass</a> = <span class="src-var">$pass</span><span class="src-sym">;        </span></li>
+<li><a name="a73"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodConnectDB">ConnectDB</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a74"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSelectDB">SelectDB</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a75"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a76"></a>&nbsp;</li>
+<li><a name="a75"></a>&nbsp;</li>
+<li><a name="a76"></a>&nbsp;</li>
+<li><a name="a77"></a><span class="src-doc">/**</span></li>
+<li><a name="a78"></a><span class="src-doc"> * Function to connect to MySQL</span></li>
+<li><a name="a79"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a80"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a81"></a><span class="src-doc"> */    </span></li>
+<li><a name="a82"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodConnectDB">ConnectDB</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a83"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$link_id">link_id</a> = <a href="http://www.php.net/mysql_connect">mysql_connect</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">$host</span><span class="src-sym">, </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$user">user</a><span class="src-sym">, </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$pass">pass</a><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a84"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a85"></a>    </li>
+<li><a name="a84"></a>&nbsp;</li>
+<li><a name="a85"></a>    </li>
+<li><a name="a86"></a><span class="src-doc">/**</span></li>
+<li><a name="a87"></a><span class="src-doc"> * Function to select the database</span></li>
+<li><a name="a88"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a89"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a90"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">resoource </span></li>
+<li><a name="a91"></a><span class="src-doc"> */    </span></li>
+<li><a name="a92"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSelectDB">SelectDB</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a93"></a>        <span class="src-key">return </span><a href="http://www.php.net/mysql_select_db">mysql_select_db</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$db">db</a><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a94"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a95"></a>    </li>
+<li><a name="a94"></a>&nbsp;</li>
+<li><a name="a95"></a>    </li>
+<li><a name="a96"></a><span class="src-doc">/**</span></li>
+<li><a name="a97"></a><span class="src-doc"> * Function to perform queries</span></li>
+<li><a name="a98"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a99"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a100"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$query </span><span class="src-doc">SQL statement</span></li>
+<li><a name="a101"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">resource </span></li>
+<li><a name="a102"></a><span class="src-doc"> */    </span></li>
+<li><a name="a103"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodQuery">Query</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a104"></a>        <span class="src-key">return </span><span class="src-sym">@</span><a href="http://www.php.net/mysql_query">mysql_query</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">, </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$link_id">link_id</a><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a105"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a106"></a>    </li>
+<li><a name="a105"></a>&nbsp;</li>
+<li><a name="a106"></a>    </li>
+<li><a name="a107"></a><span class="src-doc">/**</span></li>
+<li><a name="a108"></a><span class="src-doc"> * Function to fetch array</span></li>
+<li><a name="a109"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a110"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a111"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">resource </span><span class="src-doc-var">$resource_id </span></li>
+<li><a name="a112"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$type </span><span class="src-doc">MYSQL_BOTH or MYSQL_ASSOC</span></li>
+<li><a name="a113"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">array </span></li>
+<li><a name="a114"></a><span class="src-doc"> */    </span></li>
+<li><a name="a115"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodFetchArray">FetchArray</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">, </span><span class="src-var">$type </span>= <span class="src-id">MYSQL_BOTH</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a116"></a>        <span class="src-key">return </span><span class="src-sym">@</span><a href="http://www.php.net/mysql_fetch_array">mysql_fetch_array</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a117"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a118"></a>    </li>
+<li><a name="a117"></a>&nbsp;</li>
+<li><a name="a118"></a>    </li>
+<li><a name="a119"></a><span class="src-doc">/**</span></li>
+<li><a name="a120"></a><span class="src-doc"> * Function to fetch the number of rows</span></li>
+<li><a name="a121"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a122"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a123"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">resource </span><span class="src-doc-var">$resource_id </span></li>
+<li><a name="a124"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">mixed </span></li>
+<li><a name="a125"></a><span class="src-doc"> */    </span></li>
+<li><a name="a126"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodNumRows">NumRows</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a127"></a>        <span class="src-key">return </span><span class="src-sym">@</span><a href="http://www.php.net/mysql_num_rows">mysql_num_rows</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a128"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a129"></a>    </li>
+<li><a name="a128"></a>&nbsp;</li>
+<li><a name="a129"></a>    </li>
+<li><a name="a130"></a><span class="src-doc">/**</span></li>
+<li><a name="a131"></a><span class="src-doc"> * Function to free the resource</span></li>
+<li><a name="a132"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a133"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a134"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">resource </span><span class="src-doc-var">$resource_id </span></li>
+<li><a name="a135"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a136"></a><span class="src-doc"> */    </span></li>
+<li><a name="a137"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodFree">Free</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a138"></a>        <span class="src-key">return </span><span class="src-sym">@</span><a href="http://www.php.net/mysql_free_result">mysql_free_result</a><span class="src-sym">(</span><span class="src-var">$resource_id</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a139"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a140"></a>&nbsp;</li>
+<li><a name="a139"></a>&nbsp;</li>
+<li><a name="a140"></a>&nbsp;</li>
+<li><a name="a141"></a><span class="src-doc">/**</span></li>
+<li><a name="a142"></a><span class="src-doc"> * Function to add slashes</span></li>
+<li><a name="a143"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a144"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a145"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$data </span></li>
+<li><a name="a146"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
+<li><a name="a147"></a><span class="src-doc"> */    </span></li>
+<li><a name="a148"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSlashes">Slashes</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a149"></a>        <span class="src-key">return </span><a href="http://www.php.net/addslashes">addslashes</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a150"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a151"></a>&nbsp;</li>
+<li><a name="a150"></a>&nbsp;</li>
+<li><a name="a151"></a>&nbsp;</li>
+<li><a name="a152"></a><span class="src-doc">/**</span></li>
+<li><a name="a153"></a><span class="src-doc"> * Function to perform DB inserts and updates - abstracted from osCommerce-MS-2.2 project</span></li>
+<li><a name="a154"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a155"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a156"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$table </span><span class="src-doc">Database table</span></li>
+<li><a name="a157"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">array </span><span class="src-doc-var">$data </span><span class="src-doc">Associative array of columns / values</span></li>
+<li><a name="a158"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$action </span><span class="src-doc">insert or update</span></li>
+<li><a name="a159"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$parameters </span></li>
+<li><a name="a160"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">resource </span></li>
+<li><a name="a161"></a><span class="src-doc"> */    </span></li>
+<li><a name="a162"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodDBPerform">DBPerform</a><span class="src-sym">(</span><span class="src-var">$table</span><span class="src-sym">, </span><span class="src-var">$data</span><span class="src-sym">, </span><span class="src-var">$action </span>= <span class="src-str">'insert'</span><span class="src-sym">, </span><span class="src-var">$parameters </span>= <span class="src-str">''</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a163"></a>        <a href="http://www.php.net/reset">reset</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a164"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$action </span>== <span class="src-str">'insert'</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a165"></a>          <span class="src-var">$query </span>= <span class="src-str">'INSERT INTO `' </span>. <span class="src-var">$table </span>. <span class="src-str">'` ('</span><span class="src-sym">;</span></li>
+<li><a name="a166"></a>          <span class="src-key">while </span><span class="src-sym">(</span>list<span class="src-sym">(</span><span class="src-var">$columns</span><span class="src-sym">, </span><span class="src-sym">) </span>= <a href="http://www.php.net/each">each</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a167"></a>            <span class="src-var">$query </span>.= <span class="src-str">'`' </span>. <span class="src-var">$columns </span>. <span class="src-str">'`, '</span><span class="src-sym">;</span></li>
+<li><a name="a168"></a>          <span class="src-sym">}</span></li>
+<li><a name="a169"></a>          <span class="src-var">$query </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">, </span><span class="src-num">0</span><span class="src-sym">, </span>-<span class="src-num">2</span><span class="src-sym">) </span>. <span class="src-str">') values ('</span><span class="src-sym">;</span></li>
+<li><a name="a170"></a>          <a href="http://www.php.net/reset">reset</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a171"></a>          <span class="src-key">while </span><span class="src-sym">(</span>list<span class="src-sym">(</span><span class="src-sym">, </span><span class="src-var">$value</span><span class="src-sym">) </span>= <a href="http://www.php.net/each">each</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a172"></a>            <span class="src-key">switch </span><span class="src-sym">(</span>(string)<span class="src-var">$value</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a173"></a>              <span class="src-key">case </span><span class="src-str">'now()'</span>:</li>
+<li><a name="a174"></a>                <span class="src-var">$query </span>.= <span class="src-str">'now(), '</span><span class="src-sym">;</span></li>
+<li><a name="a175"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a176"></a>              <span class="src-key">case </span><span class="src-str">'null'</span>:</li>
+<li><a name="a177"></a>                <span class="src-var">$query </span>.= <span class="src-str">'null, '</span><span class="src-sym">;</span></li>
+<li><a name="a178"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a179"></a>              <span class="src-key">default</span>:</li>
+<li><a name="a180"></a>                <span class="src-var">$query </span>.= <span class="src-str">&quot;'&quot; </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSlashes">Slashes</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">) </span>. <span class="src-str">&quot;', &quot;</span><span class="src-sym">;</span></li>
+<li><a name="a181"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a182"></a>            <span class="src-sym">}</span></li>
+<li><a name="a183"></a>          <span class="src-sym">}</span></li>
+<li><a name="a184"></a>          <span class="src-var">$query </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">, </span><span class="src-num">0</span><span class="src-sym">, </span>-<span class="src-num">2</span><span class="src-sym">) </span>. <span class="src-str">')'</span><span class="src-sym">;</span></li>
+<li><a name="a185"></a>        <span class="src-sym">} </span><span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$action </span>== <span class="src-str">'update'</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a186"></a>          <span class="src-var">$query </span>= <span class="src-str">'UPDATE `' </span>. <span class="src-var">$table </span>. <span class="src-str">'` SET '</span><span class="src-sym">;</span></li>
+<li><a name="a187"></a>          <span class="src-key">while </span><span class="src-sym">(</span>list<span class="src-sym">(</span><span class="src-var">$columns</span><span class="src-sym">, </span><span class="src-var">$value</span><span class="src-sym">) </span>= <a href="http://www.php.net/each">each</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a188"></a>            <span class="src-key">switch </span><span class="src-sym">(</span>(string)<span class="src-var">$value</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a189"></a>              <span class="src-key">case </span><span class="src-str">'now()'</span>:</li>
+<li><a name="a190"></a>                <span class="src-var">$query </span>.= <span class="src-str">'`' </span>.<span class="src-var">$columns </span>. <span class="src-str">'`=now(), '</span><span class="src-sym">;</span></li>
+<li><a name="a191"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a192"></a>              <span class="src-key">case </span><span class="src-str">'null'</span>:</li>
+<li><a name="a193"></a>                <span class="src-var">$query </span>.= <span class="src-str">'`' </span>.<span class="src-var">$columns </span>.= <span class="src-str">'`=null, '</span><span class="src-sym">;</span></li>
+<li><a name="a194"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a195"></a>              <span class="src-key">default</span>:</li>
+<li><a name="a196"></a>                <span class="src-var">$query </span>.= <span class="src-str">'`' </span>.<span class="src-var">$columns </span>. <span class="src-str">&quot;`='&quot; </span>. <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSlashes">Slashes</a><span class="src-sym">(</span><span class="src-var">$value</span><span class="src-sym">) </span>. <span class="src-str">&quot;', &quot;</span><span class="src-sym">;</span></li>
+<li><a name="a197"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a198"></a>            <span class="src-sym">}</span></li>
+<li><a name="a199"></a>          <span class="src-sym">}</span></li>
+<li><a name="a200"></a>          <span class="src-var">$query </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">, </span><span class="src-num">0</span><span class="src-sym">, </span>-<span class="src-num">2</span><span class="src-sym">) </span>. <span class="src-str">' WHERE ' </span>. <span class="src-var">$parameters</span><span class="src-sym">;</span></li>
+<li><a name="a201"></a>        <span class="src-sym">}</span></li>
+<li><a name="a202"></a>        <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodQuery">Query</a><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a203"></a>    <span class="src-sym">} </span><span class="src-comm"># end function    </span></li>
+<li><a name="a203"></a>&nbsp;</li>
+<li><a name="a204"></a><span class="src-sym">} </span><span class="src-comm"># end class</span></li>
+<li><a name="a205"></a>&nbsp;</li>
+<li><a name="a206"></a><span class="src-doc">/**</span></li>
+<li><a name="a207"></a><span class="src-doc"> * Google Sitemap Base Class</span></li>
+<li><a name="a208"></a><span class="src-doc"> *</span></li>
+<li><a name="a209"></a><span class="src-doc"> * The MySQL_Database class provides abstraction so the databaes can be accessed</span></li>
+<li><a name="a210"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> Google-XML-Sitemap-Feed</span></li>
+<li><a name="a211"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@license</span><span class="src-doc"> http://opensource.org/licenses/gpl-license.php GNU Public License</span></li>
+<li><a name="a212"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a213"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@link</span><span class="src-doc"> http://www.oscommerce-freelancers.com/ osCommerce-Freelancers</span></li>
+<li><a name="a214"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@link</span><span class="src-doc"> http://www.google.com/webmasters/sitemaps/docs/en/about.html About Google Sitemap</span></li>
+<li><a name="a215"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@copyright</span><span class="src-doc"> Copyright 2005, Bobby Easland</span></li>
+<li><a name="a216"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a217"></a><span class="src-doc"> */</span></li>
+<li><a name="a218"></a><span class="src-key">class </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html">GoogleSitemap</a><span class="src-sym">{</span></li>
+<li><a name="a219"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a220"></a><span class="src-doc">     * $DB is the database object</span></li>
+<li><a name="a221"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">object </span></li>
+<li><a name="a222"></a><span class="src-doc">     */</span></li>
+<li><a name="a223"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">$DB</a><span class="src-sym">;</span></li>
+<li><a name="a224"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a225"></a><span class="src-doc">     * $filename is the base name of the feeds (i.e. - 'sitemap')</span></li>
+<li><a name="a226"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a227"></a><span class="src-doc">     */</span></li>
+<li><a name="a228"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$filename">$filename</a><span class="src-sym">;</span></li>
+<li><a name="a229"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a230"></a><span class="src-doc">     * $savepath is the path where the feeds will be saved - store root</span></li>
+<li><a name="a231"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a232"></a><span class="src-doc">     */</span></li>
+<li><a name="a233"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">$savepath</a><span class="src-sym">;</span></li>
+<li><a name="a234"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a235"></a><span class="src-doc">     * $base_url is the URL for the catalog</span></li>
+<li><a name="a236"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a237"></a><span class="src-doc">     */</span></li>
+<li><a name="a238"></a>    <span class="src-key">var </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$base_url">$base_url</a><span class="src-sym">;</span></li>
+<li><a name="a239"></a>&nbsp;</li>
+<li><a name="a240"></a>    </li>
+<li><a name="a241"></a><span class="src-doc">/**</span></li>
+<li><a name="a242"></a><span class="src-doc"> * GoogleSitemap class constructor</span></li>
+<li><a name="a243"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a244"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a245"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$host </span><span class="src-doc">Database host setting (i.e. - localhost)</span></li>
+<li><a name="a246"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$user </span><span class="src-doc">Database user</span></li>
+<li><a name="a247"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$db </span><span class="src-doc">Database name</span></li>
+<li><a name="a248"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$pass </span><span class="src-doc">Database password</span></li>
+<li><a name="a249"></a><span class="src-doc"> */    </span></li>
+<li><a name="a250"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGoogleSitemap">GoogleSitemap</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">, </span><span class="src-var">$user</span><span class="src-sym">, </span><span class="src-var">$db</span><span class="src-sym">, </span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a251"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a> = <span class="src-key">new </span><span class="src-id">MySQL_Database</span><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">, </span><span class="src-var">$user</span><span class="src-sym">, </span><span class="src-var">$db</span><span class="src-sym">, </span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a252"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$filename">filename</a> = <span class="src-str">&quot;sitemap&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a253"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> = <span class="src-id">DIR_FS_CATALOG </span>. <span class="src-id">DIR_WS_HTTP_CATALOG</span><span class="src-sym">;</span></li>
+<li><a name="a254"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$base_url">base_url</a> = <span class="src-id">HTTP_SERVER </span>. <span class="src-id">DIR_WS_HTTP_CATALOG</span><span class="src-sym">;</span></li>
+<li><a name="a255"></a>    <span class="src-sym">} </span><span class="src-comm"># end class constructor</span></li>
+<li><a name="a256"></a>&nbsp;</li>
+<li><a name="a255"></a>&nbsp;</li>
+<li><a name="a256"></a>&nbsp;</li>
+<li><a name="a257"></a><span class="src-doc">/**</span></li>
+<li><a name="a258"></a><span class="src-doc"> * Function to save the sitemap data to file as either XML or XML.GZ format</span></li>
+<li><a name="a259"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a260"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a261"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$data </span><span class="src-doc">XML data</span></li>
+<li><a name="a262"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$type </span><span class="src-doc">Feed type (index, products, categories)</span></li>
+<li><a name="a263"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a264"></a><span class="src-doc"> */    </span></li>
+<li><a name="a265"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodSaveFile">SaveFile</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a266"></a>        <span class="src-var">$filename </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> . <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$filename">filename</a> . <span class="src-var">$type</span><span class="src-sym">;            </span></li>
+<li><a name="a267"></a>        <span class="src-var">$compress </span>= <a href="http://www.php.net/defined">defined</a><span class="src-sym">(</span><span class="src-str">'GOOGLE_SITEMAP_COMPRESS'</span><span class="src-sym">) </span>? <span class="src-id"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html#defineGOOGLE_SITEMAP_COMPRESS">GOOGLE_SITEMAP_COMPRESS</a> </span>: <span class="src-str">'false'</span><span class="src-sym">;</span></li>
+<li><a name="a268"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$type </span>== <span class="src-str">'index'</span><span class="src-sym">) </span><span class="src-var">$compress </span>= <span class="src-str">'false'</span><span class="src-sym">;</span></li>
+<li><a name="a269"></a>        <span class="src-key">switch</span><span class="src-sym">(</span><span class="src-var">$compress</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a270"></a>            <span class="src-key">case </span><span class="src-str">'true'</span>:</li>
+<li><a name="a271"></a>                <span class="src-var">$filename </span>.= <span class="src-str">'.xml.gz'</span><span class="src-sym">;</span></li>
+<li><a name="a272"></a>                <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$gz </span>= <a href="http://www.php.net/gzopen">gzopen</a><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">,</span><span class="src-str">'wb9'</span><span class="src-sym">))</span><span class="src-sym">{</span></li>
+<li><a name="a273"></a>                    <a href="http://www.php.net/gzwrite">gzwrite</a><span class="src-sym">(</span><span class="src-var">$gz</span><span class="src-sym">, </span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a274"></a>                    <a href="http://www.php.net/gzclose">gzclose</a><span class="src-sym">(</span><span class="src-var">$gz</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a275"></a>                    <span class="src-key">return </span><span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a276"></a>                <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a277"></a>                    <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a278"></a>                <span class="src-sym">}</span></li>
+<li><a name="a279"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a280"></a>            <span class="src-key">default</span>:</li>
+<li><a name="a281"></a>                <span class="src-var">$filename </span>.= <span class="src-str">'.xml'</span><span class="src-sym">;</span></li>
+<li><a name="a282"></a>                <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$fp </span>= <a href="http://www.php.net/fopen">fopen</a><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">, </span><span class="src-str">'w+'</span><span class="src-sym">))</span><span class="src-sym">{</span></li>
+<li><a name="a283"></a>                    <a href="http://www.php.net/fwrite">fwrite</a><span class="src-sym">(</span><span class="src-var">$fp</span><span class="src-sym">, </span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a284"></a>                    <a href="http://www.php.net/fclose">fclose</a><span class="src-sym">(</span><span class="src-var">$fp</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a285"></a>                    <span class="src-key">return </span><span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a286"></a>                <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a287"></a>                    <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a288"></a>                <span class="src-sym">}</span></li>
+<li><a name="a289"></a>                <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a290"></a>        <span class="src-sym">} </span><span class="src-comm"># end switch </span></li>
+<li><a name="a291"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a292"></a>    </li>
+<li><a name="a291"></a>&nbsp;</li>
+<li><a name="a292"></a>    </li>
+<li><a name="a293"></a><span class="src-doc">/**</span></li>
+<li><a name="a294"></a><span class="src-doc"> * Function to compress a normal file</span></li>
+<li><a name="a295"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a296"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a297"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$file </span></li>
+<li><a name="a298"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a299"></a><span class="src-doc"> */    </span></li>
+<li><a name="a300"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodCompressFile">CompressFile</a><span class="src-sym">(</span><span class="src-var">$file</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a301"></a>        <span class="src-var">$source </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> . <span class="src-var">$file </span>. <span class="src-str">'.xml'</span><span class="src-sym">;</span></li>
+<li><a name="a302"></a>        <span class="src-var">$filename </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> . <span class="src-var">$file </span>. <span class="src-str">'.xml.gz'</span><span class="src-sym">;</span></li>
+<li><a name="a303"></a>        <span class="src-var">$error_encountered </span>= <span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a304"></a>        <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$gz_out </span>= <a href="http://www.php.net/gzopen">gzopen</a><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">, </span><span class="src-str">'wb9'</span><span class="src-sym">) )</span><span class="src-sym">{</span></li>
+<li><a name="a305"></a>            <span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$fp_in </span>= <a href="http://www.php.net/fopen">fopen</a><span class="src-sym">(</span><span class="src-var">$source</span><span class="src-sym">,</span><span class="src-str">'rb'</span><span class="src-sym">))</span><span class="src-sym">{</span></li>
+<li><a name="a306"></a>                <span class="src-key">while</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/feof">feof</a><span class="src-sym">(</span><span class="src-var">$fp_in</span><span class="src-sym">)) </span><a href="http://www.php.net/gzwrite">gzwrite</a><span class="src-sym">(</span><span class="src-var">$gz_out</span><span class="src-sym">, </span><a href="http://www.php.net/fread">fread</a><span class="src-sym">(</span><span class="src-var">$fp_in</span><span class="src-sym">, </span><span class="src-num">1024</span>*<span class="src-num">512</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a307"></a>                    <a href="http://www.php.net/fclose">fclose</a><span class="src-sym">(</span><span class="src-var">$fp_in</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a308"></a>                 </li>
+<li><a name="a309"></a>            <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a310"></a>                <span class="src-var">$error_encountered </span>= <span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a311"></a>            <span class="src-sym">}</span></li>
+<li><a name="a312"></a>            <a href="http://www.php.net/gzclose">gzclose</a><span class="src-sym">(</span><span class="src-var">$gz_out</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a313"></a>        <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a314"></a>            <span class="src-var">$error_encountered </span>= <span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a315"></a>        <span class="src-sym">}</span></li>
+<li><a name="a316"></a>        <span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$error_encountered</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a317"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a318"></a>        <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a319"></a>            <span class="src-key">return </span><span class="src-id">true</span><span class="src-sym">;    </span></li>
+<li><a name="a320"></a>        <span class="src-sym">}</span></li>
+<li><a name="a321"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a322"></a>&nbsp;</li>
+<li><a name="a321"></a>&nbsp;</li>
+<li><a name="a322"></a>&nbsp;</li>
+<li><a name="a323"></a><span class="src-doc">/**</span></li>
+<li><a name="a324"></a><span class="src-doc"> * Function to generate sitemap file from data</span></li>
+<li><a name="a325"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a326"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a327"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">array </span><span class="src-doc-var">$data </span></li>
+<li><a name="a328"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$file </span></li>
+<li><a name="a329"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a330"></a><span class="src-doc"> */    </span></li>
+<li><a name="a331"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">, </span><span class="src-var">$file</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a332"></a>        <span class="src-var">$content </span>= <span class="src-str">'&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a333"></a>        <span class="src-var">$content </span>.= <span class="src-str">'&lt;urlset xmlns=&quot;http://www.google.com/schemas/sitemap/0.84&quot;&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a334"></a>        <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$data </span><span class="src-key">as </span><span class="src-var">$url</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a335"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t&quot; </span>. <span class="src-str">'&lt;url&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a336"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;loc&gt;'</span>.<span class="src-var">$url</span><span class="src-sym">[</span><span class="src-str">'loc'</span><span class="src-sym">]</span>.<span class="src-str">'&lt;/loc&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a337"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;lastmod&gt;'</span>.<span class="src-var">$url</span><span class="src-sym">[</span><span class="src-str">'lastmod'</span><span class="src-sym">]</span>.<span class="src-str">'&lt;/lastmod&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a338"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;changefreq&gt;'</span>.<span class="src-var">$url</span><span class="src-sym">[</span><span class="src-str">'changefreq'</span><span class="src-sym">]</span>.<span class="src-str">'&lt;/changefreq&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a339"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;priority&gt;'</span>.<span class="src-var">$url</span><span class="src-sym">[</span><span class="src-str">'priority'</span><span class="src-sym">]</span>.<span class="src-str">'&lt;/priority&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a340"></a>            <span class="src-var">$content </span>.= <span class="src-str">&quot;\t&quot; </span>. <span class="src-str">'&lt;/url&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a341"></a>        <span class="src-sym">} </span><span class="src-comm"># end foreach</span></li>
+<li><a name="a342"></a>        <span class="src-var">$content </span>.= <span class="src-str">'&lt;/urlset&gt;'</span><span class="src-sym">;</span></li>
+<li><a name="a343"></a>        <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodSaveFile">SaveFile</a><span class="src-sym">(</span><span class="src-var">$content</span><span class="src-sym">, </span><span class="src-var">$file</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a344"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a345"></a>    </li>
+<li><a name="a344"></a>&nbsp;</li>
+<li><a name="a345"></a>    </li>
+<li><a name="a346"></a><span class="src-doc">/**</span></li>
+<li><a name="a347"></a><span class="src-doc"> * Function to generate sitemap index file</span></li>
+<li><a name="a348"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a349"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a350"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a351"></a><span class="src-doc"> */    </span></li>
+<li><a name="a352"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemapIndex">GenerateSitemapIndex</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a353"></a>        <span class="src-var">$content </span>= <span class="src-str">'&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a354"></a>        <span class="src-var">$content </span>.= <span class="src-str">'&lt;sitemapindex xmlns=&quot;http://www.google.com/schemas/sitemap/0.84&quot;&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;        </span></li>
+<li><a name="a355"></a>        <span class="src-var">$pattern </span>= <a href="http://www.php.net/defined">defined</a><span class="src-sym">(</span><span class="src-str">'GOOGLE_SITEMAP_COMPRESS'</span><span class="src-sym">)</span></li>
+<li><a name="a356"></a>                     ?    <span class="src-id"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html#defineGOOGLE_SITEMAP_COMPRESS">GOOGLE_SITEMAP_COMPRESS</a> </span>== <span class="src-str">'true'</span></li>
+<li><a name="a357"></a>                             ?    <span class="src-str">&quot;{sitemap*.xml.gz}&quot;</span></li>
+<li><a name="a358"></a>                            :     <span class="src-str">&quot;{sitemap*.xml}&quot;</span></li>
+<li><a name="a359"></a>                     :    <span class="src-str">&quot;{sitemap*.xml}&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a360"></a>        <span class="src-key">foreach </span><span class="src-sym">( </span><a href="http://www.php.net/glob">glob</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> . <span class="src-var">$pattern</span><span class="src-sym">, </span><span class="src-id">GLOB_BRACE</span><span class="src-sym">) </span><span class="src-key">as </span><span class="src-var">$filename </span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a361"></a>           <span class="src-key">if </span><span class="src-sym">( </span><a href="http://www.php.net/eregi">eregi</a><span class="src-sym">(</span><span class="src-str">'index'</span><span class="src-sym">, </span><span class="src-var">$filename</span><span class="src-sym">) ) </span><span class="src-key">continue</span><span class="src-sym">;</span></li>
+<li><a name="a362"></a>           <span class="src-var">$content </span>.= <span class="src-str">&quot;\t&quot; </span>. <span class="src-str">'&lt;sitemap&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a363"></a>           <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;loc&gt;'</span>.<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$base_url">base_url</a> . <a href="http://www.php.net/basename">basename</a><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">)</span>.<span class="src-str">'&lt;/loc&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a364"></a>           <span class="src-var">$content </span>.= <span class="src-str">&quot;\t\t&quot; </span>. <span class="src-str">'&lt;lastmod&gt;'</span>.<a href="http://www.php.net/date">date</a> <span class="src-sym">(</span><span class="src-str">&quot;Y-m-d\TH:i:s&quot;</span><span class="src-sym">, </span><a href="http://www.php.net/filemtime">filemtime</a><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">))</span>.<span class="src-str">'&lt;/lastmod&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a365"></a>           <span class="src-var">$content </span>.= <span class="src-str">&quot;\t&quot; </span>. <span class="src-str">'&lt;/sitemap&gt;' </span>. <span class="src-str">&quot;\n&quot;</span><span class="src-sym">;                   </span></li>
+<li><a name="a366"></a>        <span class="src-sym">} </span><span class="src-comm"># end foreach</span></li>
+<li><a name="a367"></a>        <span class="src-var">$content </span>.= <span class="src-str">'&lt;/sitemapindex&gt;'</span><span class="src-sym">;</span></li>
+<li><a name="a368"></a>        <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodSaveFile">SaveFile</a><span class="src-sym">(</span><span class="src-var">$content</span><span class="src-sym">, </span><span class="src-str">'index'</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a369"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a370"></a>    </li>
+<li><a name="a369"></a>&nbsp;</li>
+<li><a name="a370"></a>    </li>
+<li><a name="a371"></a><span class="src-doc">/**</span></li>
+<li><a name="a372"></a><span class="src-doc"> * Function to generate product sitemap data</span></li>
+<li><a name="a373"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a374"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a375"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a376"></a><span class="src-doc"> */    </span></li>
+<li><a name="a377"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateProductSitemap">GenerateProductSitemap</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a378"></a>        <span class="src-var">$sql </span>= <span class="src-str">&quot;SELECT products_id as pID, products_date_added as date_added, products_last_modified as last_mod, products_ordered </span></li>
+<li><a name="a379"></a><span class="src-str">                FROM &quot; </span>. <span class="src-id">TABLE_PRODUCTS </span>. <span class="src-str">&quot; </span></li>
+<li><a name="a380"></a><span class="src-str">                WHERE products_status='1' </span></li>
+<li><a name="a381"></a><span class="src-str">                ORDER BY products_ordered DESC&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a382"></a>        <span class="src-key">if </span><span class="src-sym">( </span><span class="src-var">$products_query </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">Query</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">) )</span><span class="src-sym">{</span></li>
+<li><a name="a383"></a>            <span class="src-var">$container </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a384"></a>            <span class="src-var">$number </span>= <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a385"></a>            <span class="src-var">$top </span>= <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a386"></a>            <span class="src-key">while</span><span class="src-sym">( </span><span class="src-var">$result </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">FetchArray</span><span class="src-sym">(</span><span class="src-var">$products_query</span><span class="src-sym">) )</span><span class="src-sym">{</span></li>
+<li><a name="a387"></a>                <span class="src-var">$top </span>= <a href="http://www.php.net/max">max</a><span class="src-sym">(</span><span class="src-var">$top</span><span class="src-sym">, </span><span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'products_ordered'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a388"></a>                <span class="src-var">$location </span>= <span class="src-id">tep_href_link</span><span class="src-sym">(</span><span class="src-id">FILENAME_PRODUCT_INFO</span><span class="src-sym">, </span><span class="src-str">'products_id=' </span>. <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'pID'</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-str">'NONSSL'</span><span class="src-sym">, </span><span class="src-id">false</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a389"></a>                <span class="src-var">$lastmod </span>= <span class="src-id">tep_not_null</span><span class="src-sym">(</span><span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'last_mod'</span><span class="src-sym">]</span><span class="src-sym">) </span>? <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'last_mod'</span><span class="src-sym">] </span>: <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'date_added'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a390"></a>                <span class="src-var">$changefreq </span>= <span class="src-id"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html#defineGOOGLE_SITEMAP_PROD_CHANGE_FREQ">GOOGLE_SITEMAP_PROD_CHANGE_FREQ</a></span><span class="src-sym">;</span></li>
+<li><a name="a391"></a>                <span class="src-var">$ratio </span>= <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'products_ordered'</span><span class="src-sym">]</span>/<span class="src-var">$top</span><span class="src-sym">;</span></li>
+<li><a name="a392"></a>                <span class="src-var">$priority </span>= <span class="src-var">$ratio </span>&lt; <span class="src-num">.1 </span>? <span class="src-num">.1 </span>: <a href="http://www.php.net/number_format">number_format</a><span class="src-sym">(</span><span class="src-var">$ratio</span><span class="src-sym">, </span><span class="src-num">1</span><span class="src-sym">, </span><span class="src-str">'.'</span><span class="src-sym">, </span><span class="src-str">''</span><span class="src-sym">)</span><span class="src-sym">; </span></li>
+<li><a name="a393"></a>                </li>
+<li><a name="a394"></a>                <span class="src-var">$container</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'loc' </span>=&gt; <a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><a href="http://www.php.net/utf8_encode">utf8_encode</a><span class="src-sym">(</span><span class="src-var">$location</span><span class="src-sym">))</span><span class="src-sym">,</span></li>
+<li><a name="a395"></a>                                     <span class="src-str">'lastmod' </span>=&gt; <a href="http://www.php.net/date">date</a> <span class="src-sym">(</span><span class="src-str">&quot;Y-m-d\TH:i:s&quot;</span><span class="src-sym">, </span><a href="http://www.php.net/strtotime">strtotime</a><span class="src-sym">(</span><span class="src-var">$lastmod</span><span class="src-sym">))</span><span class="src-sym">,</span></li>
+<li><a name="a396"></a>                                     <span class="src-str">'changefreq' </span>=&gt; <span class="src-var">$changefreq</span><span class="src-sym">,</span></li>
+<li><a name="a397"></a>                                     <span class="src-str">'priority' </span>=&gt; <span class="src-var">$priority</span></li>
+<li><a name="a398"></a>                                     <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a399"></a>                <span class="src-key">if </span><span class="src-sym">( </span><a href="http://www.php.net/sizeof">sizeof</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">) </span>&gt;= <span class="src-num">50000 </span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a400"></a>                    <span class="src-var">$type </span>= <span class="src-var">$number </span>== <span class="src-num">0 </span>? <span class="src-str">'products' </span>: <span class="src-str">'products' </span>. <span class="src-var">$number</span><span class="src-sym">;</span></li>
+<li><a name="a401"></a>                    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a402"></a>                    <span class="src-var">$container </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a403"></a>                    <span class="src-var">$number</span>++<span class="src-sym">;</span></li>
+<li><a name="a404"></a>                <span class="src-sym">}</span></li>
+<li><a name="a405"></a>            <span class="src-sym">} </span><span class="src-comm"># end while</span></li>
+<li><a name="a406"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">Free</span><span class="src-sym">(</span><span class="src-var">$products_query</span><span class="src-sym">)</span><span class="src-sym">;            </span></li>
+<li><a name="a407"></a>            <span class="src-key">if </span><span class="src-sym">( </span><a href="http://www.php.net/sizeof">sizeof</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">) </span>&gt; <span class="src-num">1 </span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a408"></a>                <span class="src-var">$type </span>= <span class="src-var">$number </span>== <span class="src-num">0 </span>? <span class="src-str">'products' </span>: <span class="src-str">'products' </span>. <span class="src-var">$number</span><span class="src-sym">;</span></li>
+<li><a name="a409"></a>                <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a410"></a>            <span class="src-sym">} </span><span class="src-comm"># end if            </span></li>
+<li><a name="a411"></a>        <span class="src-sym">}</span></li>
+<li><a name="a412"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a413"></a>    </li>
+<li><a name="a412"></a>&nbsp;</li>
+<li><a name="a413"></a>    </li>
+<li><a name="a414"></a><span class="src-doc">/**</span></li>
+<li><a name="a415"></a><span class="src-doc"> * Funciton to generate category sitemap data</span></li>
+<li><a name="a416"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a417"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a418"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">boolean </span></li>
+<li><a name="a419"></a><span class="src-doc"> */    </span></li>
+<li><a name="a420"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateCategorySitemap">GenerateCategorySitemap</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a421"></a>        <span class="src-var">$sql </span>= <span class="src-str">&quot;SELECT categories_id as cID, date_added, last_modified as last_mod </span></li>
+<li><a name="a422"></a><span class="src-str">                FROM &quot; </span>. <span class="src-id">TABLE_CATEGORIES </span>. <span class="src-str">&quot; </span></li>
+<li><a name="a423"></a><span class="src-str">                ORDER BY parent_id ASC, sort_order ASC, categories_id ASC&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a424"></a>        <span class="src-key">if </span><span class="src-sym">( </span><span class="src-var">$categories_query </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">Query</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">) )</span><span class="src-sym">{</span></li>
+<li><a name="a425"></a>            <span class="src-var">$container </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a426"></a>            <span class="src-var">$number </span>= <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a427"></a>            <span class="src-key">while</span><span class="src-sym">( </span><span class="src-var">$result </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">FetchArray</span><span class="src-sym">(</span><span class="src-var">$categories_query</span><span class="src-sym">) )</span><span class="src-sym">{</span></li>
+<li><a name="a428"></a>                <span class="src-var">$location </span>= <span class="src-id">tep_href_link</span><span class="src-sym">(</span><span class="src-id">FILENAME_DEFAULT</span><span class="src-sym">, </span><span class="src-str">'cPath=' </span>. <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'cID'</span><span class="src-sym">]</span><span class="src-sym">, </span><span class="src-str">'NONSSL'</span><span class="src-sym">, </span><span class="src-id">false</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a429"></a>                <span class="src-var">$lastmod </span>= <span class="src-id">tep_not_null</span><span class="src-sym">(</span><span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'last_mod'</span><span class="src-sym">]</span><span class="src-sym">) </span>? <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'last_mod'</span><span class="src-sym">] </span>: <span class="src-var">$result</span><span class="src-sym">[</span><span class="src-str">'date_added'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a430"></a>                <span class="src-var">$changefreq </span>= <span class="src-id"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html#defineGOOGLE_SITEMAP_CAT_CHANGE_FREQ">GOOGLE_SITEMAP_CAT_CHANGE_FREQ</a></span><span class="src-sym">;</span></li>
+<li><a name="a431"></a>                <span class="src-var">$priority </span>= <span class="src-num">.5</span><span class="src-sym">; </span></li>
+<li><a name="a432"></a>                </li>
+<li><a name="a433"></a>                <span class="src-var">$container</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'loc' </span>=&gt; <a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><a href="http://www.php.net/utf8_encode">utf8_encode</a><span class="src-sym">(</span><span class="src-var">$location</span><span class="src-sym">))</span><span class="src-sym">,</span></li>
+<li><a name="a434"></a>                                     <span class="src-str">'lastmod' </span>=&gt; <a href="http://www.php.net/date">date</a> <span class="src-sym">(</span><span class="src-str">&quot;Y-m-d\TH:i:s&quot;</span><span class="src-sym">, </span><a href="http://www.php.net/strtotime">strtotime</a><span class="src-sym">(</span><span class="src-var">$lastmod</span><span class="src-sym">))</span><span class="src-sym">,</span></li>
+<li><a name="a435"></a>                                     <span class="src-str">'changefreq' </span>=&gt; <span class="src-var">$changefreq</span><span class="src-sym">,</span></li>
+<li><a name="a436"></a>                                     <span class="src-str">'priority' </span>=&gt; <span class="src-var">$priority</span></li>
+<li><a name="a437"></a>                                     <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a438"></a>                <span class="src-key">if </span><span class="src-sym">( </span><a href="http://www.php.net/sizeof">sizeof</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">) </span>&gt;= <span class="src-num">50000 </span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a439"></a>                    <span class="src-var">$type </span>= <span class="src-var">$number </span>== <span class="src-num">0 </span>? <span class="src-str">'categories' </span>: <span class="src-str">'categories' </span>. <span class="src-var">$number</span><span class="src-sym">;</span></li>
+<li><a name="a440"></a>                    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a441"></a>                    <span class="src-var">$container </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a442"></a>                    <span class="src-var">$number</span>++<span class="src-sym">;</span></li>
+<li><a name="a443"></a>                <span class="src-sym">}</span></li>
+<li><a name="a444"></a>            <span class="src-sym">} </span><span class="src-comm"># end while</span></li>
+<li><a name="a445"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">DB</a><span class="src-sym">-&gt;</span><span class="src-id">Free</span><span class="src-sym">(</span><span class="src-var">$categories_query</span><span class="src-sym">)</span><span class="src-sym">;            </span></li>
+<li><a name="a446"></a>            <span class="src-key">if </span><span class="src-sym">( </span><a href="http://www.php.net/sizeof">sizeof</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">) </span>&gt; <span class="src-num">1 </span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a447"></a>                <span class="src-var">$type </span>= <span class="src-var">$number </span>== <span class="src-num">0 </span>? <span class="src-str">'categories' </span>: <span class="src-str">'categories' </span>. <span class="src-var">$number</span><span class="src-sym">;</span></li>
+<li><a name="a448"></a>                <span class="src-key">return </span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a><span class="src-sym">(</span><span class="src-var">$container</span><span class="src-sym">, </span><span class="src-var">$type</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a449"></a>            <span class="src-sym">} </span><span class="src-comm"># end if            </span></li>
+<li><a name="a450"></a>        <span class="src-sym">}</span></li>
+<li><a name="a451"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a452"></a>&nbsp;</li>
+<li><a name="a451"></a>&nbsp;</li>
+<li><a name="a452"></a>&nbsp;</li>
+<li><a name="a453"></a><span class="src-doc">/**</span></li>
+<li><a name="a454"></a><span class="src-doc"> * Utility function to read and return the contents of a GZ formatted file</span></li>
+<li><a name="a455"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a456"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a457"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@param </span><span class="src-doc-type">string </span><span class="src-doc-var">$file </span><span class="src-doc">File to open</span></li>
+<li><a name="a458"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
+<li><a name="a459"></a><span class="src-doc"> */    </span></li>
+<li><a name="a460"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodReadGZ">ReadGZ</a><span class="src-sym">( </span><span class="src-var">$file </span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a461"></a>        <span class="src-var">$file </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">savepath</a> . <span class="src-var">$file</span><span class="src-sym">;</span></li>
+<li><a name="a462"></a>        <span class="src-var">$lines </span>= <a href="http://www.php.net/gzfile">gzfile</a><span class="src-sym">(</span><span class="src-var">$file</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a463"></a>        <span class="src-key">return </span><a href="http://www.php.net/implode">implode</a><span class="src-sym">(</span><span class="src-str">''</span><span class="src-sym">, </span><span class="src-var">$lines</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a464"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a465"></a>    </li>
+<li><a name="a464"></a>&nbsp;</li>
+<li><a name="a465"></a>    </li>
+<li><a name="a466"></a><span class="src-doc">/**</span></li>
+<li><a name="a467"></a><span class="src-doc"> * Utility function to generate the submit URL</span></li>
+<li><a name="a468"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Bobby Easland</span></li>
+<li><a name="a469"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 1.0</span></li>
+<li><a name="a470"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
+<li><a name="a471"></a><span class="src-doc"> */    </span></li>
+<li><a name="a472"></a>    <span class="src-key">function </span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSubmitURL">GenerateSubmitURL</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a473"></a>        <span class="src-var">$url </span>= <a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$base_url">base_url</a> . <span class="src-str">'sitemapindex.xml'</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a474"></a>        <span class="src-key">return </span><a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><a href="http://www.php.net/utf8_encode">utf8_encode</a><span class="src-sym">(</span><span class="src-str">'http://www.google.com/webmasters/sitemaps/ping?sitemap=' </span>. <span class="src-var">$url</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a475"></a>    <span class="src-sym">} </span><span class="src-comm"># end function</span></li>
+<li><a name="a475"></a>&nbsp;</li>
+<li><a name="a476"></a><span class="src-sym">} </span><span class="src-comm">#  end class</span></li>
+<li><a name="a477"></a><span class="src-php">?&gt;</span></li>
+</ol></pre></div>
+</span></div>
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Sat,  4 Jun 2005 23:45:59 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

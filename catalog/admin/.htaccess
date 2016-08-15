@@ -1,0 +1,6 @@
+AuthUserFile /var/www/bes/catalog/admin/.htpasswd
+AuthName "BES Admin"
+AuthType Basic
+require user boater3
+
+DirectoryIndex index.php

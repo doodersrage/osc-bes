@@ -1,0 +1,6 @@
+Add this:
+
+// BOF Enable - Disable Categories Contribution--------------------------------------
+define('TEXT_EDIT_STATUS', 'Å¸¼¨');
+// EOF Enable - Disable Categories Contribution--------------------------------------
+

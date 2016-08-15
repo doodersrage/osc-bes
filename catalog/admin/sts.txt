@@ -1,0 +1,451 @@
+Simple Template System (STS) README.txt
+Contribution Author: Brian Gallagher @ DiamondSea.com
+Contribution Author Email: sts@diamondsea.com
+
+-----------------------------------------------------------------------------
+SUPPORT THE OSCOMMERCE DEVELOPERS !
+-----------------------------------------------------------------------------
+If you like this contribution please donate to the osCommerce core team at 
+ http://www.oscommerce.com/about/team 
+Without their incredible work, I wouldn't have been able to build on such
+a strong foundation.  Thank you!
+
+This software is licensed under the Gnu Public License, which can be found 
+here and is incorporated herein by reference: 
+
+  http://www.gnu.org/licenses/gpl.txt
+
+-----------------------------------------------------------------------------
+WHAT IT DOES:
+-----------------------------------------------------------------------------
+Lets you create simple HTML templates to customize the look and feel of OSC.
+
+You simply create an HTML page that looks the way you want it to and put in
+placeholders for the various elements wherever you want to position them.
+
+For example, you would put "$cartbox" wherever on the page you want the 
+Shopping Cart box to appear.  Put "$categorybox" where you want the Categories
+box to appear.  Put "$content" wherever you want the main page
+content (the central part where all the magic happens) to appear, etc.
+
+It does this by changing only a few /catalog/includes/ files, leaving all 
+other files untouched, making it easy to add other contributions later.
+
+-----------------------------------------------------------------------------
+NEW IN STS VERSION 2.00
+-----------------------------------------------------------------------------
+
+MULTIPLE CATEGORY TEMPLATES: Create custom templates for any or each category:
+
+1) You can have a default site template by creating 
+creating /catalog/includes/sts_template.html
+
+2) You can have a default category template by
+creating /catalog/includes/sts_templates/index.php.html
+
+3) You can have a different template for the Main Catalog Page (cPath=0) by
+creating /catalog/includes/sts_templates/index.php_0.html
+
+4) You can have a different template for the other Catalog pages (cPath=XX_YY) 
+by creating /catalog/includes/sts_templates/index.php_XX-YY.html (where XX_YY
+is the cPath=XX_YY value you see in the categories URL
+
+
+PRODUCT_INFO TEMPLATES: You can customize your product information pages by
+creating /catalog/includes/sts_templates/product_info.php.html and using the
+product_info template variables (listed below) to layout your product_info
+pages.
+
+
+-----------------------------------------------------------------------------
+BONUS FEATURES: Simple HEADER TAG CONTROLLER Integration
+-----------------------------------------------------------------------------
+This contribution also allows you to use WebMakers.com's
+ Header Tag Controller contribution without having to modify every file on
+the system.  Just copy the Header Tag Controller's include files into place
+and STS will automatically add them to all pages without having to modify
+every PHP script in the /catalog/ directory.
+
+STS will auto-detect if Header Tag Controller is installed and use it if 
+available.
+
+-----------------------------------------------------------------------------
+HOW TO INSTALL (EASY):
+-----------------------------------------------------------------------------
+
+Install a clean version of the osCommerce Milestone 2.2 Release (OSC 2.2MS2),
+run the install program and verify that everything works.  (If you have 
+already added other contributions, it may not work the Easy way and 
+you may have to use the Advanced method.
+
+Then copy the following files into your /catalog/includes directory.
+
+application_top.php
+header.php
+column_left.php
+column_right.php
+footer.php
+application_bottom.php
+sts_start_capture.php
+sts_stop_capture.php
+sts_restart_capture.php
+sts_display_output.php
+sts_user_code.php
+sts_template.html
+configure-SAMPLE.php  <----- See note below! <---------
+
+
+NOTE: configure-SAMPLE.php is included in the ZIP file, but you will have to
+reenter all your configuration settings if you use it.  It is easier
+to just add the STS lines at the bottom of the file to the bottom of your 
+existing /catalog/includes/configure.php file.
+
+Add these lines to your /catalog/includes/configure.php script.  These lines 
+should go before the final line with the ?> characters on it.
+
+// STS: ADD: Define Simple Template System files
+  define('STS_START_CAPTURE', DIR_WS_INCLUDES . 'sts_start_capture.php');
+  define('STS_STOP_CAPTURE', DIR_WS_INCLUDES . 'sts_stop_capture.php'); 
+  define('STS_RESTART_CAPTURE', DIR_WS_INCLUDES . 'sts_restart_capture.php');
+  define('STS_TEMPLATE_DIR', DIR_WS_INCLUDES . 'sts_templates/');
+  define('STS_DEFAULT_TEMPLATE', DIR_WS_INCLUDES . 'sts_template.html'); 
+  define('STS_DISPLAY_OUTPUT', DIR_WS_INCLUDES . 'sts_display_output.php');
+  define('STS_USER_CODE', DIR_WS_INCLUDES . 'sts_user_code.php');
+  define('STS_PRODUCT_INFO', DIR_WS_INCLUDES . 'sts_product_info.php');
+// STS: EOADD
+
+NOTE: DO NOT put the files in the /admin/ directories.  This contribution 
+only works in the /catalog/ section.
+
+-----------------------------------------------------------------------------
+HOW TO INSTALL (ADVANCED):
+-----------------------------------------------------------------------------
+For each of these files in the /catalog/includes/ directory:
+
+  application_top.php
+  header.php
+  column_left.php
+  column_right.php
+  footer.php
+  application_bottom.php
+
+You will need to merge the changes in the STS files into your existing files.
+
+The changes are preceded by:
+
+  // STS: ADD: 
+
+and are ended with:
+
+  // STS: EOADD
+
+NOTE: configure-SAMPLE.php is included in the ZIP file, but you will have to
+reenter all your configuration settings if you use it.  It is easier
+to just add the STS lines at the bottom of the file to the bottom of your 
+existing /catalog/includes/configure.php file.
+
+The simplest way I've found to make changes is to use a file compare and merge 
+tool.  A simple graphical tool (the one I've been using myself) can be found 
+here:
+
+  http://www.compareandmerge.com/
+
+It's shareware ($35) and has a fully functional demo period.  It makes merging 
+lots of changes a breeze.  I have no affiliation with this product other than 
+being a happy user of it.
+
+After the changes are made, copy these files:
+
+  sts_start_capture.php
+  sts_stop_capture.php
+  sts_display_output.php
+  sts_user_code.php
+  sts_product_info.php
+  sts_template.html
+
+into your /catalog/includes/ directory and hopefully everything will work!
+
+-----------------------------------------------------------------------------
+HOW TO USE:
+-----------------------------------------------------------------------------
+In the simplest configuration, you just modify the 
+
+ /catalog/includes/sts_template.html
+
+file to look however you want.  Use stylesheet settings or HTML setting to 
+provide a custom look and feel to your site and arrange elements wherever you
+like them.
+
+If you want to add any new boxes or template variables, add them in the
+sts_user_code.php file.  If you upgrade to later version of STS, be sure not
+to replace this file when you put your new version in.
+
+Normally you can not control the output that appears in the $content variable
+with STS.  To change the actual $content area, you will need to modify the
+various PHP files manually, just like you would without STS.  However, some
+of the new features described below will provide you with a little more 
+functionality and control over the $content without having to modify any of
+the PHP files.
+
+-----------------------------------------------------------------------------
+USING MULTIPLE TEMPLATE FILES:
+-----------------------------------------------------------------------------
+Starting with version 1.8 you can now use multiple template files based on
+the name of the script being executed.  You need to:
+
+1) Create the /catalog/includes/sts_templates/ directory
+2) Put your custom template files in it using the name format:
+     scriptname.php.html
+   For example, for a custom template file for "index.php" would be:
+     /catalog/includes/sts_templates/index.php.html
+3) The files will be treated only as HTML files, and no server-side code in
+   them will be executed.  This is why we add the HTML extension to it, as a
+   reminder.
+4) If a custom template file is not defined for the current script, it will
+   use the STS_DEFAULT_TEMPLATE file instead.
+
+-----------------------------------------------------------------------------
+USING MULTIPLE CATEGORY TEMPLATES:
+-----------------------------------------------------------------------------
+Starting with version 2.00 you can now use multiple template files that will
+change according to the category selected in index.php.
+
+You can now create custom templates for any or each category.  Here is how
+the appropriate template file is selected:
+
+1) You can have a default site template by creating
+
+  /catalog/includes/sts_template.html
+
+2) You can have a default category template by creating 
+
+  /catalog/includes/sts_templates/index.php.html
+
+3) You can have a different template for the Main Catalog Page (cPath=0) by
+creating 
+
+  /catalog/includes/sts_templates/index.php_0.html
+
+4) You can have a different template for the other Catalog pages (cPath=XX_YY)
+by creating 
+
+  /catalog/includes/sts_templates/index.php_XX-YY.html 
+
+(where XX_YY is the cPath=XX_YY value you see in the categories URL.
+
+-----------------------------------------------------------------------------
+USING PRODUCT_INFO CONTENT TEMPLATES:
+-----------------------------------------------------------------------------
+Starting with version 2.00 you can now use PRODUCT_INFO TEMPLATES to customize
+the $CONTENT section of your product information pages by creating:
+
+  /catalog/includes/sts_templates/product_info.php.html 
+
+and using the product_info template variables (listed below) to layout 
+your product_info pages.
+
+A very ugly but functional sample of a product_info.php.html file is provided 
+in the STS distribution.  This file is called:
+
+  product_info.php.html-SAMPLE
+
+To use this file on your site, you would copy it into your
+
+  /catalog/includes/sts_templates/
+
+directory and rename it to be 
+
+  product_info.php.html
+
+-----------------------------------------------------------------------------
+TIPS AND TRICKS:
+-----------------------------------------------------------------------------
+
+WHEN CREATING TEMPLATE FILES, USE ___ABSOLUTE___ URLs. Using relative URLs
+will work, but it may be a bit tougher to debug your templates.
+
+Make your image and stylesheet links absolute URL's (with a leading slash 
+or http://) instead of relative (no leading slash).
+
+This will allow you to simply view the template page in your browser exactly 
+as it will appear on your site, as opposed to the missing-image version you 
+get with relative URL's, above.
+
+You'll then be able to view your accurate-looking template page with the URL:
+
+  http://www.YourDomain.com/YourCatalogPath/includes/sts_template.html
+
+
+-----------------------------------------------------------------------------
+SUPPORTED TEMPLATE TAGS:
+-----------------------------------------------------------------------------
+Here are the tags that are supported so far (more sure to come in later 
+versions):
+
+$headcontent: Put this string in your <head> section so that it can insert
+the dynamic head content and javascript on pages that require it.  This will
+probably require putting the $headcontent in the <head> section in the source
+code.  It's a pain to do it this way, but it was the only way I could get it 
+working. Sorry!
+
+<!--$headcontent--> : You can use this commented format of $headcontent to
+keep the word "$headcontent" from displaying in your web authoring software.
+
+NOTE: Do not put <title>...</title> tags in your header.  It will be added
+as part of the $headcontent variable, along with the Description and Keywords
+meta tags if you have the WebMakers.com's Header Tag Controller contribution
+installed.
+
+$cataloglogo: The OSC logo and link
+$urlcataloglogo: The URL used by the $catalog logo.  
+$myaccountlogo: The MyAccount graphic and link
+$urlmyaccountlogo: The URL used by the My Account function
+$cartlogo: The Cart graphic and link
+$urlcartlogo: The URL used by the Cart function
+$checkoutlogo: The Checkout graphic and link
+$urlcheckoutlogo: The URL used by the Checkout function
+$breadcrumbs: The "Top > Catalog > whatever..." breadcrumbs text and links
+$myaccount: The text version of "My Account" and link.  Changes to "Logoff" if logged on.
+$urlmyaccount: The URL used by the MyAccount function.
+$logoff: The Logoff text and link
+$urllogoff: The URL for the LogOff function
+$myaccountlogoff: shows "My Account | Logoff" if logged in or "My Account" if not logged in
+$cartcontents: The text version of the "Cart Contents" function.
+$urlcartcontents: The URL used by the MyAccount function.
+$checkout: The text version of the "Check Out" function.
+$urlcheckout: The URL used by the "Check Out" function.
+
+$categorybox: The Category box
+$manufacturerbox: The Manufacturer box
+$whatsnewbox: The What's New box
+$searchbox: The Search box
+$informationbox: The Information box
+$cartbox: The Shopping Cart box
+$maninfobox: The Manufacturer Info box (blank if not used on a page)
+$orderhistorybox: The Order History box (blank if not used on a page, ie: use not logged in)
+$bestsellersbox: The Best Sellers box
+$specialfriendbox: Either the Specials box or the Tell A Friend box (depending on page viewed)
+$reviewsbox: The Reviews box
+$languagebox: The Languages box
+$currenciesbox: The Currencies box
+$content: The main content of the page (the middle of the page)
+$date: The current date
+$numrequests: The "XXX requests Since DATE" text
+$counter: The page view counter
+$footer: The footer output from footer.php
+$banner: The banner output from footer.php
+
+$sid: The string for the Session ID in the format "SessionIdVarName=WhateverTheSessionIdIs"
+
+$urlcat_Category_Name: The URL to link to the category name.  Spaces in the category name must
+ be replaced with underscores.  For example, for a link the category "Video Cards" you would 
+ user the template variable 
+
+	$urlcat_Video_cards 
+
+ The variable names are case insensitive, so you can use upper and lower case however you like.
+
+$urlcat_x_y_z: The URL to link to the category by cPath string.  You can use this to link to a 
+ category by the numeric values of the categories as shown by the "cPath" variable in the URL.
+ The benefit of this is that it will still work if you change the names of the categories, which
+ would break the $urlcat_Category_Name format.
+
+$cat_Category_Name: Same as $urlcat_Category_Name
+$cat_x_y_z: Same as $urlcat_x_y_z
+
+$catmenu: A drop-down list of available categories (defined in sts_user_code.php)
+
+-----------------------------------------------------------------------------
+SUPPORTED PRODUCT_INFO TEMPLATE TAGS:
+-----------------------------------------------------------------------------
+These are the tags you can use when creating Product_Info templates.  These
+tags can be used in place of the $content variable in your 
+
+	/catalog/includes/sts_templates/product_info.php.html 
+
+file.
+
+$startform: Required as the first item in the content area.  This starts the HTML form needed for adding things to your cart.
+$endform: This should be the last item in the content area.  This closes the HTML form needed for adding things to your cart.
+$productname: The product name
+$productmodel: The product's model number or blank
+$productdesc: The product description
+$imagesmall: The product image scaled down to the thumbnail size specified in your /admin/ tools
+$imagelarge: The product image with no resizing (actual size of image)
+
+$optionheader: The "Available Options:" text above the options, will change with the language.  Blank if no options (product attributes)
+$optionames: A list of Option (Product Attribute) names, separated by line breaks ("<br>").  Blank if no options.
+$optionchoices: A list of Option (Product Attributes) choices as drop-down boxes, separated by line breaks ("<br>").  Blank if no options.
+
+NOTE: As shown in the /catalog/includes/product_info.php.html-SAMPLE file, it is recommended that you use an HTML table to layout the options (Product Attributes).  In the first column have $optionnames and in the second column have $optionchoices.  This will automatically keep the correct names next to the correct choices.
+
+$moreinfolabel: The language-sensitive value of TEXT_MORE_INFORMATION (for linking to a more detailed page)
+$moreinfourl: The URL of the page where more information can be found
+
+$productdatelabel: Will contain either the Date Added or the Date Available messages, language specific.
+$productdate: The date it will be available or the date it was added.
+
+$reviews: The number of reviews for the item
+$reviewsbutton: The image for the reviews button
+$reviewsurl: The URL for the product's reviews
+
+NOTE: The "Products Also Purchased" feature does not work in the Product_Info templates (yet)
+
+-----------------------------------------------------------------------------
+DEBUGGING:
+-----------------------------------------------------------------------------
+In the /catalog/includes/sts_display_output.php file you can see the 
+following settings (near the top of the file):
+
+  $display_template_output = 1;
+  $display_normal_output = 0;
+  $display_debugging_output = 0;
+
+Display_Template_Output (the default setting) will cause it to display the
+template versions of the pages.
+
+Display_Normal_Output will cause it to display the non-template version of
+the pages.
+
+Display_Debugging_Output will cause it to display debugging information 
+showing all of the blocks of data that it is using and how it translates
+them into template variables as well as some other runtime details.
+
+You can use any or all of the settings in any combination.  If you have both
+Normal and Template output, the Template output will be displayed first.
+
+-----------------------------------------------------------------------------
+REMOTE DEBUGGING:
+-----------------------------------------------------------------------------
+You can toggle the debugging options via URL options.  You can use the 
+following parameters in your URL to turn on/off options from your browser
+
+sts_template=1     Turns on the Template display
+sts_template=0     Turns off the Template display
+sts_normal=1       Turns on the Normal display
+sts_normal=0       Turns off the Normal display
+sts_debug=1        Turns on the Debugging display
+sts_debug=0        Turns off the Debugging display
+sts_version=1      Turns on Version Number display
+sts_version=0      Turns off Version Number display
+
+-----------------------------------------------------------------------------
+ADDITIONAL STS SUPPORT INFORMATION: 
+-----------------------------------------------------------------------------
+
+	http://www.diamondsea.com/sts
+
+-----------------------------------------------------------------------------
+SAMPLE STS INSTALLATIONS: 
+-----------------------------------------------------------------------------
+
+We maintain a list of sites that use STS here:
+
+	http://www.diamondsea.com/sts/sites.html
+
+To submit your own site, send an email to stssites@diamondsea.com .
+
+Include your site's name, URL, URL of your template file(s) and optionally
+any comments, notes, tricks or suggestions for others interested in using STS.
+
+

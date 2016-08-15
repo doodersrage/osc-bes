@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="account.php" server="68.66.148.106//var/www/bes/" local="128981499110000000" remote="128981499110000000" />
+<file name="account_edit.php" server="68.66.148.106//var/www/bes/" local="128981499110000000" remote="128981499110000000" />
+<file name="account_history.php" server="68.66.148.106//var/www/bes/" local="128981499120000000" remote="128981499120000000" />
+<file name="account_history_info.php" server="68.66.148.106//var/www/bes/" local="128981499120000000" remote="128981499120000000" />
+<file name="account_newsletters.php" server="68.66.148.106//var/www/bes/" local="128981499120000000" remote="128981499120000000" />
+<file name="account_notifications.php" server="68.66.148.106//var/www/bes/" local="128981499120000000" remote="128981499120000000" />
+<file name="account_password.php" server="68.66.148.106//var/www/bes/" local="128981499130000000" remote="128981499130000000" />
+<file name="address_book.php" server="68.66.148.106//var/www/bes/" local="128981499130000000" remote="128981499130000000" />
+<file name="address_book_process.php" server="68.66.148.106//var/www/bes/" local="128981499130000000" remote="128981499130000000" />
+<file name="advanced_search.php" server="68.66.148.106//var/www/bes/" local="128981499130000000" remote="128981499130000000" />
+<file name="checkout_confirmation.php" server="68.66.148.106//var/www/bes/" local="128981499140000000" remote="128981499140000000" />
+<file name="checkout_payment.php" server="68.66.148.106//var/www/bes/" local="128981499150000000" remote="128981499150000000" />
+<file name="checkout_payment_address.php" server="68.66.148.106//var/www/bes/" local="128981499150000000" remote="128981499150000000" />
+<file name="checkout_process.php" server="68.66.148.106//var/www/bes/" local="128981499150000000" remote="128981499150000000" />
+<file name="checkout_shipping.php" server="68.66.148.106//var/www/bes/" local="128981499150000000" remote="128981499150000000" />
+<file name="checkout_shipping_address.php" server="68.66.148.106//var/www/bes/" local="128981499160000000" remote="128981499160000000" />
+<file name="checkout_success.php" server="68.66.148.106//var/www/bes/" local="128981499160000000" remote="128981499160000000" />
+<file name="conditions.php" server="68.66.148.106//var/www/bes/" local="128981499160000000" remote="128981499160000000" />
+<file name="contact_us.php" server="68.66.148.106//var/www/bes/" local="128981499170000000" remote="128981499170000000" />
+<file name="cookie_usage.php" server="68.66.148.106//var/www/bes/" local="128981499170000000" remote="128981499170000000" />
+<file name="create_account.php" server="68.66.148.106//var/www/bes/" local="128981499170000000" remote="128981499170000000" />
+<file name="create_account_success.php" server="68.66.148.106//var/www/bes/" local="128981499180000000" remote="128981499180000000" />
+<file name="download.php" server="68.66.148.106//var/www/bes/" local="128981499180000000" remote="128981499180000000" />
+<file name="gv_faq.php" server="68.66.148.106//var/www/bes/" local="128981499180000000" remote="128981499180000000" />
+<file name="gv_redeem.php" server="68.66.148.106//var/www/bes/" local="128981499190000000" remote="128981499190000000" />
+<file name="gv_send.php" server="68.66.148.106//var/www/bes/" local="128981499190000000" remote="128981499190000000" />
+<file name="index.php" server="68.66.148.106//var/www/bes/" local="128981499190000000" remote="128981499190000000" />
+<file name="info_shopping_cart.php" server="68.66.148.106//var/www/bes/" local="128981499200000000" remote="128981499200000000" />
+<file name="login.php" server="68.66.148.106//var/www/bes/" local="128981499200000000" remote="128981499200000000" />
+<file name="logoff.php" server="68.66.148.106//var/www/bes/" local="128981499200000000" remote="128981499200000000" />
+<file name="password_forgotten.php" server="68.66.148.106//var/www/bes/" local="128981499210000000" remote="128981499210000000" />
+<file name="popup_coupon_help.php" server="68.66.148.106//var/www/bes/" local="128981499210000000" remote="128981499210000000" />
+<file name="privacy.php" server="68.66.148.106//var/www/bes/" local="128981499210000000" remote="128981499210000000" />
+<file name="products_new.php" server="68.66.148.106//var/www/bes/" local="128981499210000000" remote="128981499210000000" />
+<file name="product_info.php" server="68.66.148.106//var/www/bes/" local="128981499220000000" remote="128981499220000000" />
+<file name="product_reviews.php" server="68.66.148.106//var/www/bes/" local="128981499220000000" remote="128981499220000000" />
+<file name="product_reviews_info.php" server="68.66.148.106//var/www/bes/" local="128981499220000000" remote="128981499220000000" />
+<file name="product_reviews_write.php" server="68.66.148.106//var/www/bes/" local="128981499230000000" remote="128981499230000000" />
+<file name="reviews.php" server="68.66.148.106//var/www/bes/" local="128981499230000000" remote="128981499230000000" />
+<file name="shipping.php" server="68.66.148.106//var/www/bes/" local="128981499230000000" remote="128981499230000000" />
+<file name="shopping_cart.php" server="68.66.148.106//var/www/bes/" local="128981499240000000" remote="128981499240000000" />
+<file name="specials.php" server="68.66.148.106//var/www/bes/" local="128981499240000000" remote="128981499240000000" />
+<file name="ssl_check.php" server="68.66.148.106//var/www/bes/" local="128981499240000000" remote="128981499240000000" />
+<file name="tell_a_friend.php" server="68.66.148.106//var/www/bes/" local="128981499240000000" remote="128981499240000000" />
+</dwsync>
